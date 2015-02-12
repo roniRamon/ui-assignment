@@ -20,15 +20,14 @@ The data set is made available as an array, `ALL_DATA`, which is loaded and avai
 
 ## Part 2: REST API Design
 
-The UI developed in Part 1 relies entirely on a set of data loaded direclty into the browser as a statically-linked script. In the real world, though, this data would be fetched and updated from a remote server using a RESTful API.
+The UI developed in Part 1 relies entirely on a set of data loaded into the browser as a statically-linked script. In the real world, though, this data would be fetched and updated from a remote server using a [RESTful API](http://en.wikipedia.org/wiki/Representational_state_transfer).
 
-For this section, we want you to design a RESTful API for accessing this Github commit data. Deliverables should be a list of endpoints, their expected inputs (query strings, request bodies, etc.), and any expected output.
+For this section, we want you to design a RESTful API for accessing the sample Github commit data, based on the requirements from Part 1. Be sure to think about the sorts of [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations you need to support based on these requirements (e.g. you'll likely need an endpoint to fetch a list of commits, but you won't need an endpoint to update a commit's `sha` value).
 
-* TODO: list the operations the API should support
+Deliverables should be a list of endpoints, their expected inputs (query strings, request bodies, etc.), and any expected output.
 
 ## (Optional) Part 3: REST API Development
 
 **Note:** This section is entirely optional! Complete only if you're so inclined.
 
-* Using the UI you developed in Part 1, and the REST API you designed in Part 2, write your own REST API implementation and have your UI talk to that API rather than the static data currently supplied
-* TODO: need to point out which areas/files will need to be updated
+Using the UI you developed in Part 1, and the REST API you designed in Part 2, write your own REST API implementation and have your UI talk to that API rather than the static data currently supplied
