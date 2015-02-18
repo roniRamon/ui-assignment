@@ -62,7 +62,7 @@ function _addToCommitList( data ) {
   This is brittle, but will work for our purposes
   */
   if( _commitList.length >= 200 ) {
-    console.log( _commitList );
+    console.log( JSON.stringify( _commitList ) );
   }
 }
 
