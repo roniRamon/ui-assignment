@@ -4,7 +4,7 @@
 
 A sample set of data (taken from Github's public APIs) is provided. Using this data, please construct a UI which will allow users to do the following:
 
-* When the user visits the landing page, they should be presented with a brief overview of the first 25 commits from the data set (in this case "the first 25" can be any arbitrary 25, order doesn't matter), with some way to view the remaining commits. Keep in mind that the sample data set has only 150 items, but a real data set may have many more than that. This summary should include the following information for each commit:
+* When the user visits the landing page, they should be presented with a brief overview of the first 25 commits from the data set (in this case "the first 25" can be any arbitrary 25, order doesn't matter), with some way to view the remaining commits. Keep in mind that the sample data set has only 200 items, but a real data set may have many more than that. This summary should include the following information for each commit:
   * Author's name
   * Commit time (either the author's commit date or the committer's commit date is acceptable)
   * The first 50 characters of the commit message
