@@ -37,3 +37,6 @@ dist
 
 # atom files
 .tags
+
+# server json db backup
+server/db.json.backup
