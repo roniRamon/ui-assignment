@@ -1,0 +1,4 @@
+{
+    "/api/": "/",
+    "/api/commits/:id/commit": "/commits/:id/commit"
+}

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm run remove-dist",
-    "start": "parallelshell \"npm run lint:tools\" \"npm run test:watch\" \"npm run open:src\"",
+    "start": "parallelshell \"npm run lint:tools\" \"npm run test:watch\" \"npm run open:src\" \"npm run api\"",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
     "lint:tools": "eslint webpack.config.js tools",
@@ -13,9 +13,11 @@
     "remove-dist": "node_modules/.bin/rimraf ./dist",
     "build:html": "babel-node tools/buildHtml.js",
     "prebuild": "npm run clean-dist && npm run build:html",
-    "build": "npm run test && babel-node tools/build.js && npm run open:dist",
+    "build": "npm run test && babel-node tools/build.js && npm run open:dist && npm run api",
     "test": "cross-env NODE_ENV=test mocha --reporter progress --compilers js:babel-core/register --recursive \"./src/**/*.spec.js\"",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "preapi": "cp server/db.json server/db.json.backup",
+    "api": "json-server --config 'server/json-server.json' --watch server/db.json"
   },
   "repository": {
     "type": "git",
@@ -56,5 +58,8 @@
   "bugs": {
     "url": "https://github.com/eSentire/ui-assignment/issues"
   },
-  "homepage": "https://github.com/eSentire/ui-assignment#readme"
+  "homepage": "https://github.com/eSentire/ui-assignment#readme",
+  "dependencies": {
+    "json-server": "^0.8.9"
+  }
 }

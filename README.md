@@ -16,7 +16,13 @@ A sample set of data (taken from Github's public APIs) is provided. Using this d
   * If a user closes the commit message and then re-opens it, any previous changes should still be present (Note: this requirement does not hold if the page is reloaded - i.e. it is acceptable for changes to be stored in-memory only)
 * Users should be able to tell easily which commits they've made changes to
 
-The data set is made available as an array, `ALL_DATA`, which is loaded and available within `js/main.js`.
+The scaffold has been set up for you to use ES2015/Babel/Webpack/BrowserSync/Sass/Mocha.
+Run `npm install` then `npm start` to start the server in development mode or `npm run build` to start a production build.
+
+The data set is made available as an array, `ALL_DATA`, which is loaded and available within `src/data/main.js`.
+### Note: All other libraries/frameworks/dependencies are prohibited. That means no jQuery, no Angular, no React. This is to test your raw JS skills.
+
+
 
 ## Part 2: REST API Design
 

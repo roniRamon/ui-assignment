@@ -1,0 +1,5 @@
+{
+    "port" : "4444",
+    "routes": "server/routes.json",
+    "id": "sha"
+}
