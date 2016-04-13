@@ -15,9 +15,7 @@
     "prebuild": "npm run clean-dist && npm run build:html",
     "build": "npm run test && babel-node tools/build.js && npm run open:dist && npm run api",
     "test": "cross-env NODE_ENV=test mocha --reporter progress --compilers js:babel-core/register --recursive \"./src/**/*.spec.js\"",
-    "test:watch": "npm run test -- --watch",
-    "preapi": "cp server/db.json server/db.json.backup",
-    "api": "json-server --config 'server/json-server.json' --watch server/db.json"
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -59,7 +57,5 @@
     "url": "https://github.com/eSentire/ui-assignment/issues"
   },
   "homepage": "https://github.com/eSentire/ui-assignment#readme",
-  "dependencies": {
-    "json-server": "^0.8.9"
-  }
+  "dependencies": {}
 }
