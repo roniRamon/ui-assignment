@@ -16,8 +16,8 @@ A sample set of data (taken from Github's public APIs) is provided. Using this d
   * If a user closes the commit message and then re-opens it, any previous changes should still be present (Note: this requirement does not hold if the page is reloaded - i.e. it is acceptable for changes to be stored in-memory only)
 * Users should be able to tell easily which commits they've made changes to
 
-The scaffold has been set up for you to use ES2015/Babel/Webpack/BrowserSync/Sass/Mocha.
-Run `npm install` then `npm start` to start the server in development mode or `npm run build` to start a production build.
+The scaffold has been set up for you to use ES2015/Babel/Webpack/BrowserSync/Sass/Mocha. You can write in either ES5 or ES2015 which will be transpiled for you.
+Run `npm install` then `npm start` to start the server in development mode or `npm run build` to start a production build. A BrowserSync instance will open up src/index.html in your browser and any code change will be reflected on the page without refreshing (HMR).
 
 The data set is stored as a json file in `server/db.json` and should only be accessed through a simple RESTful API at http://localhost:8080. You should read the `server/index.js` and be able to use the API accordingly.
 ### Note: All other libraries/frameworks/dependencies are prohibited. That means no jQuery, no Angular, no React. This is to test your raw JS skills.
