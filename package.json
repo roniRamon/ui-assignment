@@ -15,7 +15,8 @@
     "prebuild": "npm run clean-dist && npm run build:html",
     "build": "npm run test && babel-node tools/build.js && npm run open:dist && npm run api",
     "test": "cross-env NODE_ENV=test mocha --reporter progress --compilers js:babel-core/register --recursive \"./src/**/*.spec.js\"",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "api": "babel-node server/index.js"
   },
   "repository": {
     "type": "git",
