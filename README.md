@@ -19,21 +19,15 @@ A sample set of data (taken from Github's public APIs) is provided. Using this d
 The scaffold has been set up for you to use ES2015/Babel/Webpack/BrowserSync/Sass/Mocha.
 Run `npm install` then `npm start` to start the server in development mode or `npm run build` to start a production build.
 
-The data set is made available as an array, `ALL_DATA`, which is loaded and available within `src/data/main.js`.
+The data set is stored as a json file in `server/db.json` and should only be accessed through a simple RESTful API at http://localhost:8080. You should read the `server/index.js` and be able to use the API accordingly.
 ### Note: All other libraries/frameworks/dependencies are prohibited. That means no jQuery, no Angular, no React. This is to test your raw JS skills.
 
 
 
-## Part 2: REST API Design
+## Part 2: REST API Implementation
 
-The UI developed in Part 1 relies entirely on a set of data loaded into the browser as a statically-linked script. In the real world, though, this data would be fetched and updated from a remote server using a [RESTful API](http://en.wikipedia.org/wiki/Representational_state_transfer).
+For this section, we want you to improve the RESTful API based on your consumption of said API in Part 1. Identify problems in the code as well as the API design as you would in a code review and fix those problems.
 
-For this section, we want you to design a RESTful API for accessing the sample Github commit data, based on the requirements from Part 1. Be sure to think about the sorts of [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations you need to support based on these requirements (e.g. you'll likely need an endpoint to fetch a list of commits, but you won't need an endpoint to update a commit's `sha` value).
-
-Deliverables should be a list of endpoints, their expected inputs (query strings, request bodies, etc.), and any expected output.
-
-## (Optional) Part 3: REST API Development
-
-**Note:** This section is entirely optional! Complete only if you're so inclined.
-
-Using the UI you developed in Part 1, and the REST API you designed in Part 2, write your own REST API implementation and have your UI talk to that API rather than the static data currently supplied
+Deliverables should include code changes as well as a short paragraph explaining what you changed and why you think it is necessary.
+### Note: API changes should be non-breaking and fully functional with Part 1 of your assignment.
+Hint: What's a good way to make breaking API changes while maintaining back-ward compatibility?
