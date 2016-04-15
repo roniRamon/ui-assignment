@@ -14,13 +14,14 @@ server.use(restify.bodyParser());
 
 server.get('/commits', (req, res) => {
   if (req.query.start && !Number.isInteger(+req.query.start)){
-    res.status(400);
+    res.send(400);
   }
   if (req.query.limit && !Number.isInteger(+req.query.limit)){
-    res.status(400);
+    res.send(400);
   }
-  let commits = [];
-  commits = db.slice(req.query.start, (+req.query.start+req.query.limit)||undefined);
+  let start = parseInt(req.query.start)||0;
+  let end = start + parseInt(req.query.limit);
+  let commits = db.slice(start, end||undefined);
   res.json(commits);
 });
 
