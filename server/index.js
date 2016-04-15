@@ -7,6 +7,7 @@ const server = restify.createServer({
 
 const db = JSON.parse(fs.readFileSync('server/db.json', 'utf8')).commits;
 
+server.use(restify.CORS());
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
 server.use(restify.bodyParser());
