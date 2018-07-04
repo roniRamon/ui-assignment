@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       });
 
     }
+    //need to remove link if No more result to fetch
     document.getElementById("link").appendChild(moreCommits);
   // }
 
