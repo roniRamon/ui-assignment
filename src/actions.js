@@ -42,8 +42,15 @@ const fetchCommit = function(sha, callback) {
 };
 
 //action to edit a commit message
-const patchCommitMessage = function(message){
-
+const patchCommitMessage = function(sha,message){
+  const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById('modal').style.display = "none";
+       }
+    };
+  xhttp.open("PATCH", `http://localhost:8080/commits/${sha}/commit`);
+  xhttp.send(JSON.stringify(message));
 };
 
 // show commit info
@@ -54,23 +61,22 @@ const commitInfo = function(commit){
 
   let ul = document.createElement("ul");
   let li = document.createElement("li");
-  li.innerHTML = "<strong> Author's name </strong>" + commit["commit"]["author"]["name"];
+  li.innerHTML = "<span class='strong'> Author: </span>" + commit["commit"]["author"]["name"];
   ul.appendChild(li); // name
   li = document.createElement("li");
-  li.innerHTML = "<strong> Commit time </strong>" + date[0] + "  " + date[1];
+  li.innerHTML = "<span class='strong'> Time: </span>" + date[0] + "  " + date[1];
   ul.appendChild(li); // time
   li = document.createElement("li");
-  li.innerHTML = "<strong> commit message: </strong>" + message;
+  li.setAttribute("class", "btn");
+  li.innerHTML = "<span class='strong'> Message: </span>" + message;
   li.addEventListener("click", function(){showModal(commit, "message");});
   ul.appendChild(li); // message
   li = document.createElement("li");
-  li.innerHTML = "<strong> Additions: </strong>" + commit["stats"]["additions"];
-  ul.appendChild(li); // add
-  li = document.createElement("li");
-  li.innerHTML = "<strong> Deletions: </strong>" + commit["stats"]["deletions"];
+  li.innerHTML = "<span class='strong'> Additions: </span><span class='add'>" + commit["stats"]["additions"] + "</span>";
+  li.innerHTML += "<span class='strong'> | Deletions: </span><span class='minus'>" + commit["stats"]["deletions"] + "</span>";
   ul.appendChild(li); // remove
   li = document.createElement("li");
-  li.innerHTML = "<strong> Files: </strong>";
+  li.innerHTML = "<span class='strong'> Files: </span>";
   ul.appendChild(li); // files
   //
   li = document.createElement("li");
@@ -82,6 +88,7 @@ const commitInfo = function(commit){
         fileName = document.createElement("li");
         fileName.innerHTML =  commit["files"][i]["filename"];
         if(commit["files"][i]["patch"] !== undefined){
+          fileName.setAttribute("class", "btn");
           fileName.addEventListener("click",
             function(){showModal(commit["files"][i]["patch"], "file");
           });
@@ -90,6 +97,7 @@ const commitInfo = function(commit){
      }
   li.appendChild(ulFiles);
   ul.appendChild(li);
+  ul.appendChild(document.createElement("hr"));
 
   return ul;
 };
@@ -131,21 +139,23 @@ window.onclick = function(event) {
 
 function editMessage(data) {
   let shaNum = data["sha"];
-  let message = data["commit"]["message"];
+  let message = data["commit"];
   let content = document.getElementById('content');
   content.innerHTML = "";
 
   let textArea = document.createElement("textarea");
-  data = document.createTextNode(message);
+  data = document.createTextNode(data["commit"]["message"]);
   textArea.appendChild(data);
   content.appendChild(textArea);
 
   //Buttons for save and cancel
   let saveButton = document.createElement("button");
   saveButton.innerHTML = "Save";
-  // saveButton.addEventListener("click",
-  //   // function(){ saveMessage(data);
-  // });
+  saveButton.addEventListener("click",
+     function(){
+       patchCommitMessage(shaNum, message);
+  });
+  content.appendChild(saveButton);
 
   let cancelButton = document.createElement("button");
   cancelButton.innerHTML = "Save";

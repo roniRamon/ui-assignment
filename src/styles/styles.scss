@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
   /*  Reset  */
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,  img, strong, sub, ol, ul, li,  form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, nav, section {
   margin: 0;
@@ -34,28 +35,83 @@ table {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
 }
 
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
+
+body {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+
+  section {
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
+    background-color: #F8F2F0;
+    h2{
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
 
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+    #root {
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+      .strong{
+        font-weight: bold;
+      }
+      .btn {
+        color: #274C77;
+        cursor: pointer;
+      }
+      .btn:hover {
+        color: #7C9EB2;
+      }
+      .add {
+        color: #F93943;
+      }
+      .minus {
+        color: #68A357;
+      }
+    }
+
+    #link {
+      text-align: center;
+      margin-top: 30px;
+
+      a {
+        color: #274C77;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      a:hover {
+        color: #324A5F;
+      }
+    }
+  }
+
 }
