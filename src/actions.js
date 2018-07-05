@@ -43,6 +43,7 @@ const fetchCommit = function(sha, callback) {
 
 //action to edit a commit message
 const patchCommitMessage = function(sha,message){
+  console.log(message);
   const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -50,7 +51,8 @@ const patchCommitMessage = function(sha,message){
        }
     };
   xhttp.open("PATCH", `http://localhost:8080/commits/${sha}/commit`);
-  xhttp.send(JSON.stringify(message));
+  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhttp.send(JSON.stringify({"message": message}));
 };
 
 // show commit info
@@ -72,8 +74,10 @@ const commitInfo = function(commit){
   li.addEventListener("click", function(){showModal(commit, "message");});
   ul.appendChild(li); // message
   li = document.createElement("li");
-  li.innerHTML = "<span class='strong'> Additions: </span><span class='add'>" + commit["stats"]["additions"] + "</span>";
-  li.innerHTML += "<span class='strong'> | Deletions: </span><span class='minus'>" + commit["stats"]["deletions"] + "</span>";
+  li.innerHTML = "<span class='strong'> Additions: </span><span class='add'>" +
+                  commit["stats"]["additions"] + "</span>";
+  li.innerHTML += "<span class='strong'> | Deletions: </span><span class='minus'>" +
+                  commit["stats"]["deletions"] + "</span>";
   ul.appendChild(li); // remove
   li = document.createElement("li");
   li.innerHTML = "<span class='strong'> Files: </span>";
@@ -138,13 +142,13 @@ window.onclick = function(event) {
 }
 
 function editMessage(data) {
-  let shaNum = data["sha"];
-  let message = data["commit"];
+  let shaNum = data.sha;
+  let message = data.commit.message;
   let content = document.getElementById('content');
   content.innerHTML = "";
 
   let textArea = document.createElement("textarea");
-  data = document.createTextNode(data["commit"]["message"]);
+  data = document.createTextNode(message);
   textArea.appendChild(data);
   content.appendChild(textArea);
 
@@ -153,7 +157,7 @@ function editMessage(data) {
   saveButton.innerHTML = "Save";
   saveButton.addEventListener("click",
      function(){
-       patchCommitMessage(shaNum, message);
+       patchCommitMessage(shaNum, textArea.value);
   });
   content.appendChild(saveButton);
 
